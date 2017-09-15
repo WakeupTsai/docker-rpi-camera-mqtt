@@ -1,7 +1,11 @@
-FROM wakeup706/rpi-python-opencv:latest
+FROM wakeup706/rpi-python-opencv:with-mqtt
 RUN [ "cross-build-start" ]
 
-RUN pip install paho-mqtt
+ADD image-mqtt.py /data
+
+ENV BROKER=192.168.0.99
+ENV TOPIC=image
 
 WORKDIR /data
-CMD [ "bash" ]
+CMD [ "python", "image-mqtt.py" ]
+
