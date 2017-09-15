@@ -1,5 +1,4 @@
 FROM wakeup706/rpi-python-opencv:with-mqtt
-RUN [ "cross-build-start" ]
 
 ADD image-mqtt.py /data
 
